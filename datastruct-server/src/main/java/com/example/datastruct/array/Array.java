@@ -24,11 +24,28 @@ public class Array {
         }
 
         for(int i=count; i>position;i--) {
-            data[count] = data[count-1];
+            data[i] = data[i-1];
         }
         data[position] = value;
         count++;
         return true;
+    }
+
+    public int find(int index) {
+        if (index < 0 || index >= count) {
+            return -1;
+        }
+        return data[index];
+
+    }
+
+    public boolean contains(int value) {
+        for (int i = 0; i < count;i++) {
+            if (data[i] == value) {
+                return true;
+            }
+        }
+        return false;
     }
 
     public boolean delete(int index) {
@@ -64,7 +81,8 @@ public class Array {
         array.insert(3, 11);
         array.printAll();
 
-    }
+        System.out.println(array.contains(3));
 
+    }
 
 }

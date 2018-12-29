@@ -133,7 +133,7 @@ public class PalindromeLink<T> {
         Node next = null;
         Node cur = head;
 
-        if (head == null || head.next == null || head.next.next == null) {
+        if (head == null || head.next == null) {
             return head;
         }
         while (cur !=p) {
@@ -160,7 +160,7 @@ public class PalindromeLink<T> {
             }
         }
 
-        if (q.next !=null || p.next != null) {
+        if (q !=null || p != null) {
             return false;
         }
 
@@ -203,12 +203,12 @@ public class PalindromeLink<T> {
 
         PalindromeLink link = new PalindromeLink();
         System.out.println("hello");
-        //int data[] = {1};
-        //int data[] = {1,2};
-        //int data[] = {1,2,3,1};
-        //int data[] = {1,2,5};
-        //int data[] = {1,2,2,1};
-         int data[] = {1,2,5,2,1};
+//        int data[] = {1};
+        int data[] = {1,2};
+//        int data[] = {1,2,3,1};
+//        int data[] = {1,2,5};
+//        int data[] = {1,2,2,1};
+//         int data[] = {1,2,5,2,1};
 //        int data[] = {1,2,5,3,1};
 
         for(int i =0; i < data.length; i++){

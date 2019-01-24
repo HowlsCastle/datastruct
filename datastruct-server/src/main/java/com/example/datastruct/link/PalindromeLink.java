@@ -4,6 +4,150 @@ public class PalindromeLink<T> {
 
     private Node head = null;
 
+    /**
+     * 反转
+     * @param list
+     * @return
+     */
+
+    public Node reverse(Node list) {
+        if (list == null || list.next == null) {
+            return list;
+        }
+
+        Node pre = null;
+        Node cur = list.next;
+        Node next = null;
+
+        while (cur != null) {
+            next = cur.next;
+            cur.next = pre;
+            pre = cur;
+            cur = next;
+        }
+        cur.next = pre;
+
+        return cur;
+    }
+
+    /**
+     *
+     * @param list
+     * @return
+     */
+    public boolean checkCircle(Node list) {
+        if (list == null) {
+            return false;
+        }
+
+        Node fast = list.next;
+        Node slow = list;
+        while(fast !=null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (slow == fast) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    /**
+     * 合并有序数组
+     * @param la
+     * @param lb
+     * @return
+     */
+
+    public Node mergeSortList(Node la, Node lb) {
+        if (la == null) return lb;
+        if (lb == null) return la;
+
+        Node head;
+        Node p = la;
+        Node q = lb;
+
+        if (compare(p, q)) {
+            head = p;
+            p = p.next;
+        } else {
+            head = q;
+            q = q.next;
+        }
+
+        Node cur = head;
+        while (q !=null && p!=null) {
+            if (compare(p, q)) {
+                cur.next = p;
+                p = p.next;
+            } else {
+                cur.next = q;
+                q = q.next;
+            }
+        }
+
+        if (p != null) {
+            cur.next = p;
+        }
+        if (q != null) {
+            cur.next = q;
+        }
+
+        return head;
+    }
+
+    //模拟比较两个对象的大小
+    private boolean compare(Node a, Node b) {
+        if (Integer.valueOf(a.element.toString()) < Integer.valueOf(b.element.toString())) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    public Node deleteLastKth(Node list, int k) {
+        Node fast = list;
+        int i = 1;
+        while (fast.next != null && i< k) {
+            fast = fast.next;
+            ++i;
+        }
+
+        if (fast == null) {
+            return list;
+        }
+
+        Node pre = null;
+        Node slow = list;
+        while(fast.next != null) {
+            fast = fast.next;
+            pre = slow;
+            slow = slow.next;
+        }
+
+        if (pre == null) {
+            return list.next;
+        } else {
+            pre.next = pre.next.next;
+        }
+        return list;
+    }
+
+    // 求中间结点
+    public Node findMiddleNode(Node list) {
+        if (list == null) return null;
+
+        Node fast = list;
+        Node slow = list;
+
+        while (fast.next != null && fast.next.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+
+        return slow;
+    }
+
     public Node findByValue(T value) {
         Node cur = head;
         while(cur != null && !cur.element.equals(value)) {

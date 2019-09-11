@@ -67,6 +67,10 @@ public class Array {
     }
 
     public static void main(String[] args) {
+        int[][] a = {{1,2},{3,4}};
+        System.out.println(a.length);
+
+
         Array array = new Array(5);
         array.printAll();
         array.insert(0, 3);

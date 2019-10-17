@@ -18,10 +18,31 @@ public class InsertSort {
         }
     }
 
+    public void insertSort(int[] a) {
+        int n = a.length;
+
+        for(int i=1;i<n;i++) {
+            int value = a[i];
+            int j = i-1;
+            for(;j>0;j--) {
+                if (a[j] > value) {
+                    a[j+1] = a[j];
+                } else {
+                    break;
+                }
+            }
+            a[j+1] = value;
+        }
+
+    }
+
     public static void main(String[] args) {
         int[] a = {8,7,6,5,4,2,3,2,2,1};
         InsertSort insertSort = new InsertSort();
         insertSort.insertSorts(a);
+        insertSort.printAll(a);
+
+        insertSort.insertSort(a);
         insertSort.printAll(a);
 
     }
